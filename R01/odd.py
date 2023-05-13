@@ -1,6 +1,6 @@
 from datetime import datetime
 
-# 🎠 - zainportowanie submodułu należacego do modułu datetime, pochodzącego z biblioteki standardowej Pythona.
+# 🎠 - zaimportowanie submodułu należacego do modułu datetime, pochodzącego z biblioteki standardowej Pythona.
 # Biblioteka standardowa Pythona jest bardzo bogata i zawiera mnóstwo kodu wielokrotnego użytku.
 
 odds = [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59]
@@ -21,6 +21,6 @@ if right_this_minute in odds:
 else:
     print('Minuta parzysta.')
 
-# Fragment kodu wykorzystujący operator in, dzięki któremu można sprawdzić - czy wartość przechowywana w zmeinnej right_this_minute znajduje się na liście odds.
+# Fragment kodu wykorzystujący operator in, dzięki któremu można sprawdzić - czy wartość przechowywana w zmiennej right_this_minute znajduje się na liście odds.
 # Operator in zwraca wartość True lub False, którą my później wykorzystujemy w odpowiedni sposób - w zależności od otrzymanej wartości.
 # Znajdują się tutaj dwa bloki/zestawy, które zawierają wywołanie funkcji print - można je łatwo zauważyć, ponieważ są odpowiednio wcięte.

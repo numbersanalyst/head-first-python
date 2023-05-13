@@ -1,6 +1,6 @@
 import html
 
-# 📃 - zainportowanie modułu biblioteki standardowej Pythona.
+# 📃 - zaimportowanie modułu biblioteki standardowej Pythona.
 # Biblioteka standardowa Pythona jest bardzo bogata i dostarcza mnóstwo kodu wielokrotnego użytku.
 
 print(html.escape("Ten fragment dokumentu HTML zawiera znacznik <script>skryptu</script>."))

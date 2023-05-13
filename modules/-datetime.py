@@ -1,6 +1,6 @@
 import datetime
 
-# 🧂 - zainportowanie modułu biblioteki standardowej Pythona
+# 🧂 - zaimportowanie modułu biblioteki standardowej Pythona
 # Biblioteka standardowa Pythona jest bardzo bogota i dostarcza mnóstwo kodu wielokrotnego użytku.
 
 print(datetime.date.today())

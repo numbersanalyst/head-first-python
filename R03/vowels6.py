@@ -1,4 +1,4 @@
-vowels = ('a', 'e', 'i', 'o', 'u')
+vowels = ['a', 'e', 'i', 'o', 'u']
 word = input("Podaj słowo, w którym należy wyszukać samogłoski: ")
 
 found = {}

@@ -13,4 +13,3 @@ for k, v in sorted(found.items()):
         print(k, "znaleziono", v, 'razy.')
     else:
         print(k, "znaleziono", v, 'raz.')
-    

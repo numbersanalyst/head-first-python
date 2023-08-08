@@ -4,7 +4,7 @@ from vsearch import search4letters
 app = Flask(__name__)
 
 
-def do_request(req: 'flask_request', res: str) -> None:
+def log_request(req: 'flask_request', res: str) -> None:
     with open('vsearch.log', 'a') as log:
         print(req.form, req.remote_addr, req.user_agent, res, file=log, sep='|')
 
@@ -15,7 +15,7 @@ def do_search() -> 'html':
     letters = request.form['letters']
     title = 'Oto wyniki twojego wyszukiwania:'
     results = str(search4letters(phrase, letters))
-    do_request(request, results)
+    log_request(request, results)
     return render_template('results.html',
                            the_title=title,
                            the_phrase=phrase,
@@ -26,14 +26,24 @@ def do_search() -> 'html':
 @app.route('/')
 @app.route('/entry')
 def entry_page() -> 'html':
-    return render_template('entry.html', the_title='Witamy na stronie internetowej search4letters!')
+    return render_template('entry.html',
+                           the_title='Witamy na stronie internetowej search4letters!')
 
 
 @app.route('/viewlog')
-def view_the_log() -> str:
+def view_the_log() -> 'html':
+    contents = []
     with open('vsearch.log') as log:
-        contents = log.read()
-    return escape(contents)
+        for line in log:
+            contents.append([])
+            for item in line.split('|'):
+                contents[-1].append(escape(item))
+        titles = ('Dane z formularza', 'Adres klienta',
+                  'Agent użytkownika', 'Wyniki')
+    return render_template('viewlog.html',
+                           the_title='Widok logu',
+                           the_row_titles=titles,
+                           the_data=contents)
 
 
 if __name__ == '__main__':

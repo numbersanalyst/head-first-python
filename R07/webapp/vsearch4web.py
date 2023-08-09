@@ -19,10 +19,16 @@ def log_request(req: 'flask_request', res: str) -> None:
     _SQL = """insert into log
             (phrase, letters, ip, browser_string, results)
             values (%s, %s, %s, %s, %s)"""
+
+    user_agent = str(req.user_agent).split()
+    user_agent_browser = user_agent[-1]
+    # because req.user_agent.browser
+    # don't work :/
+
     cursor.execute(_SQL, (req.form['phrase'],
                           req.form['letters'],
                           req.remote_addr,
-                          str(req.user_agent),
+                          user_agent_browser,
                           res))
 
     conn.commit()

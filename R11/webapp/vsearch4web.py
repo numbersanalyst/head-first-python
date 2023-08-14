@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request, escape, session
+
 from vsearch import search4letters
-from DBcm import UseDatabase
+
+from DBcm import UseDatabase, ConnectionError, CredentialsError, SQLError
 from checker import check_logged_in
+
+from time import sleep
 
 app = Flask(__name__)
 
@@ -27,7 +31,7 @@ def do_logout() -> str:
 
 def log_request(req: 'flask_request', res: str) -> None:
     """Loguje szczegóły żądania sieciowego oraz wynik."""
-
+    sleep(15)
     with UseDatabase(app.config['dbconfig']) as cursor:
         _SQL = """insert into log
                 (phrase, letters, ip, browser_string, results)
@@ -73,16 +77,27 @@ def entry_page() -> 'html':
 @check_logged_in
 def view_the_log() -> 'html':
     """Wyświetla zawartość pliku logu w postaci tabeli HTML."""
-    with UseDatabase(app.config['dbconfig']) as cursor:
-        _SQL = """select phrase, letters, ip, browser_string, results from log"""
-        cursor.execute(_SQL)
-        contents = cursor.fetchall()
-    titles = ('Fraza', 'Litery', 'Adres klienta',
-              'Agent użytkownika', 'Wyniki')
-    return render_template('viewlog.html',
-                           the_title='Widok logu',
-                           the_row_titles=titles,
-                           the_data=contents)
+    try:
+        with UseDatabase(app.config['dbconfig']) as cursor:
+            _SQL = """select phrase, letters, ip, browser_string, results from logerror"""
+            cursor.execute(_SQL)
+            contents = cursor.fetchall()
+        # raise Exception('Jakiś nieznany wyjątek.')
+        titles = ('Fraza', 'Litery', 'Adres klienta',
+                  'Agent użytkownika', 'Wyniki')
+        return render_template('viewlog.html',
+                               the_title='Widok logu',
+                               the_row_titles=titles,
+                               the_data=contents)
+    except ConnectionError as err:
+        print('Czy twoja baza danych jest włączona? Błąd:', str(err))
+    except CredentialsError as err:
+        print('Problemy z identyfikatorem użytkownika lub hasłem dostępu. Błąd:', str(err))
+    except SQLError as err:
+        print('Czy Twoje zapytanie jest poprawne? Błąd:', str(err))
+    except Exception as err:
+        print('Coś poszło źle:', str(err))
+    return 'Błąd'
 
 
 if __name__ == '__main__':

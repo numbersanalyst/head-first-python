@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, escape, session
 from flask import copy_current_request_context
 from vsearch import search4letters
 
-from DBcm import UseDatabase, ConnectionError, CredentialsError, SQLError
+from DBcm import UseDatabase
 from checker import check_logged_in
 from errorchecker import check_for_errors
 

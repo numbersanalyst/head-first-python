@@ -18,6 +18,6 @@ I have learned a lot throughout this book.
 
 <br>
 
-Photos are from [oreilly.com](www.oreilly.com).
+Some exercises I done with [Python 3 Module of the Week](https://pymotw.com/3/index.html) and [Tech With Tim](https://www.youtube.com/@TechWithTim).
 
-Some exercises I done with [Python 3 Module of the Week](https://pymotw.com/3/index.html).
+Photos are from [oreilly.com](www.oreilly.com).

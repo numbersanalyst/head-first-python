@@ -4,7 +4,7 @@ It's my Python notes to that book in Polish version:
 ### ![o'reilly logo](logo.svg)
 ### ![book cover](book.png)
 
-I have learned a lot throughout this book.
+I have learned a lot throughout this book. It was a long journey but worth it.
 
 ## Table of contents
 <details>

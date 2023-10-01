@@ -6,6 +6,8 @@ It's my Python notes to that book in Polish version:
 
 I have learned a lot throughout this book. It was a long journey but worth it.
 
+## Vsearch4Web ULTRA
+![vseach4web main page](vsearch4web-ultra.png)
 One of my projects after reading this book: [vsearch4web-ultra](https://github.com/numbersanalyst/vsearch4web-ultra).
 
 ## Table of contents
